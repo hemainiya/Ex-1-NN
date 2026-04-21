@@ -1,7 +1,7 @@
 <H3>ENTER YOUR NAME: HEMA SREE S</H3>
 <H3>ENTER YOUR REGISTER NO.212224040112</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE21/04/26</H3>
+<H3>DATE 21/04/26</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
