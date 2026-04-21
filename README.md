@@ -36,85 +36,67 @@ STEP 4:Encoding categorical data<BR>
 STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
-## PROGRAM
+#  PROGRAM:
+```py
+ import pandas as pd
+ import io
+ from sklearn.preprocessing import StandardScaler
+ from sklearn.preprocessing import MinMaxScaler
+ from sklearn.model_selection import train_test_split
+ df = pd.read_csv("Churn_Modelling.csv")
+ df
+ df.isnull().sum()
+ df.fillna(0)
+ df.isnull().sum()
+ df.duplicated()
+ df['EstimatedSalary'].describe()
+ scaler = StandardScaler()
+ inc_cols = ['CreditScore', 'Tenure', 'Balance', 'EstimatedSalary']
+ scaled_values = scaler.fit_transform(df[inc_cols])
+ df[inc_cols] = pd.DataFrame(scaled_values, columns = inc_cols, index = df.index)
+ df
+ x = df.iloc[:, :-1]
+ y = df.iloc[:, -1]
+ print("X Values")
+ x
+ print("Y Values")
+ y
+ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_stat
+ print("X Training data")
+ x_train
+ print("X Testing data")
+ x_test
 ```
-py
-import pandas as pd
-import io
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
 
-data = pd.read_csv("Churn_Modelling.csv")
-data
-data.head()
+# OUTPUT:
+## DATASET:
+<img width="1388" height="497" alt="image" src="https://github.com/user-attachments/assets/fd421f1b-86be-4a72-92b8-8cb5fb1b8be1" />
 
-X=data.iloc[:,:-1].values
-X
+## MISSING VALUES:
+<img width="228" height="339" alt="image" src="https://github.com/user-attachments/assets/8db399ba-30c2-46ae-bf80-0f652cb21e04" />
 
-y=data.iloc[:,-1].values
-y
+## DUPLICATES:
+<img width="314" height="271" alt="image" src="https://github.com/user-attachments/assets/4608c4a9-b995-486f-a6df-92a60c6fbce7" />
 
-data.isnull().sum()
+## OUTLIERS (SALARY):
+<img width="343" height="205" alt="image" src="https://github.com/user-attachments/assets/1a346111-dc5c-4a6e-badd-1ae252f78c8f" />
 
-data.duplicated()
+## NORMALIZED DATASET:
+<img width="1379" height="518" alt="image" src="https://github.com/user-attachments/assets/83d69416-5792-40b9-86e4-ff0fa02828ba" />
 
-data.describe()
+## X_VALUES:
+<img width="1171" height="448" alt="image" src="https://github.com/user-attachments/assets/d1b2f7c7-1f2e-4034-875a-1f29626a5002" />
 
-data = data.drop(['Surname', 'Geography','Gender'], axis=1)
-data.head()
+## Y_VALUES:
+<img width="412" height="290" alt="image" src="https://github.com/user-attachments/assets/24e4a501-dfea-4c3c-87a1-3700e373760f" />
 
-scaler=MinMaxScaler()
-df1=pd.DataFrame(scaler.fit_transform(data))
-print(df1)
+## SPLITTING THE DATASET FOR TRAINING AND TESTING :
 
-X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+## TRAINING_DATA :
+<img width="1377" height="536" alt="image" src="https://github.com/user-attachments/assets/42c2c20d-7c43-439e-b190-0f6d8a1a25de" />
 
-X_train
+## TESTING_DATA :
+<img width="1379" height="537" alt="image" src="https://github.com/user-attachments/assets/2556602c-92e0-4996-bb0d-69b90c352aad" />
 
-X_test
-
-print("Lenght of X_test ",len(X_test))
-
-
-```
-## OUTPUT:
-
-### Dataset:
-<img width="1251" height="207" alt="image" src="https://github.com/user-attachments/assets/f0143c16-cc92-4b75-845d-39ec26eb2ab9" />
-
-
-### X Values:
-<img width="656" height="133" alt="image" src="https://github.com/user-attachments/assets/6462e2a1-85eb-4f15-aa20-4b8e497e8920" />
-
-
-### Y Values:
-<img width="347" height="33" alt="image" src="https://github.com/user-attachments/assets/ed70ffe6-574b-468e-8c98-6cbb7a0157dc" />
-
-
-### Null Values:
-<img width="226" height="524" alt="image" src="https://github.com/user-attachments/assets/2e6924de-3575-47e0-b9ac-b784213d6a8f" />
-
-
-### Duplicated Values:
-<img width="237" height="462" alt="image" src="https://github.com/user-attachments/assets/5a82875b-58a1-4840-8a7e-00151196e862" />
-
-
-### Description:
-<img width="1363" height="300" alt="image" src="https://github.com/user-attachments/assets/62121eff-12df-4786-958c-bf708e157a36" />
-
-
-### Normalized Dataset:
-<img width="823" height="497" alt="image" src="https://github.com/user-attachments/assets/80f642d1-541c-4531-b6aa-8ae079f7101c" />
-
-
-### Training Data:
-<img width="661" height="138" alt="image" src="https://github.com/user-attachments/assets/7f68cc2f-2e92-4b12-a838-dc6466dcf81a" />
-
-
-### Testing Data:
-<img width="661" height="121" alt="image" src="https://github.com/user-attachments/assets/759aeccd-dcb4-4e80-a283-a1d181c4c87b" />
-
-
-## RESULT:
+# RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
